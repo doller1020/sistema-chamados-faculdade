@@ -1,0 +1,1 @@
+print("Sistema de Chamados - Projeto Acadêmico iniciado")
