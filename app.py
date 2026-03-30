@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 print("Sistema de Chamados - Projeto Acadêmico iniciado")
-=======
 
 print("================================")
 print(" Sistema de Chamados - Faculdade")
@@ -22,5 +20,3 @@ elif opcao == "2":
 else:
     print("Opção inválida")
 
-
->>>>>>> b9dc91ec25b8d3d169d420190d88a4a24ef51511

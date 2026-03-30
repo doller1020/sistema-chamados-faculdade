@@ -1,0 +1,21 @@
+<h2>Chamados</h2>
+
+<a href="/abrir_chamado">Abrir novo chamado</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Status</th>
+    </tr>
+
+    {% for chamado in chamados %}
+    <tr>
+        <td>{{ chamado[0] }}</td>
+        <td>{{ chamado[1] }}</td>
+        <td>{{ chamado[2] }}</td>
+        <td>{{ chamado[3] }}</td>
+    </tr>
+    {% endfor %}
+</table>

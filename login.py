@@ -1,3 +1,4 @@
+from flask import session
 from chamados import atualizar_status
 from chamados import listar_chamados
 from chamados import abrir_chamado

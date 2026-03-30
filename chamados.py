@@ -9,10 +9,9 @@ def abrir_chamado(usuario):
     descricao = input("Descrição: ")
 
     cursor.execute(
-        "INSERT INTO chamados (titulo, descricao, status, usuario) VALUES (?, ?, ?, ?)",
-        (titulo, descricao, "aberto", usuario)
-    )
-
+    "INSERT INTO chamados (titulo, descricao, status, usuario) VALUES (?, ?, ?, ?)",
+    (titulo, descricao, "aberto", session["usuario"])
+)
     conexao.commit()
     conexao.close()
 
