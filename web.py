@@ -5,8 +5,13 @@ app = Flask(__name__)
 app.secret_key = "1234"  # obrigatório para sessões
 
 # Função para conectar ao banco
+import os
+
 def get_db_connection():
-    conn = sqlite3.connect("database.db")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    db_path = os.path.join(BASE_DIR, "database.db")
+
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -39,7 +44,7 @@ def login():
             elif tipo == "tecnico":
                 return redirect(url_for("listar_chamados"))
             elif tipo == "admin":
-                return "<h1>Painel Admin (em construção)</h1>"
+                return render_template("admin.html")
         else:
             flash("Login inválido!")
             return redirect(url_for("login"))
@@ -85,7 +90,7 @@ def abrir_chamado():
         # Inserir no banco incluindo o usuário
         cursor.execute(
             "INSERT INTO chamados (titulo, descricao, status, usuario) VALUES (?, ?, ?, ?)",
-            (titulo, descricao, "Aberto", usuario_logado)
+            (titulo, descricao, "aberto", session["usuario"])
         )
 
         conexao.commit()
@@ -102,6 +107,75 @@ def logout():
     session.clear()
     flash("Você saiu do sistema.")
     return redirect(url_for("login"))
+
+
+@app.route("/atualizar_status/<int:id>", methods=["POST"])
+def atualizar_status(id):
+    novo_status = request.form["status"]
+
+    conexao = sqlite3.connect("database.db")
+    cursor = conexao.cursor()
+
+    cursor.execute(
+        "UPDATE chamados SET status = ? WHERE id = ?",
+        (novo_status, id)
+    )
+
+    conexao.commit()
+    conexao.close()
+
+    return render_template(
+        "mensagem.html",
+    	titulo="Status alterado com sucesso!",
+    	mensagem="Fique atento(a) ao andamento do seu chamado."
+    )
+
+@app.route("/atualizar_nivel/<int:id>", methods=["POST"])
+def atualizar_nivel(id):
+    novo_nivel = request.form["nivel"]
+
+    conexao = sqlite3.connect("database.db")
+    cursor = conexao.cursor()
+
+    cursor.execute(
+        "UPDATE chamados SET nivel = ? WHERE id = ?",
+        (novo_nivel, id)
+    )
+
+    conexao.commit()
+    conexao.close()
+
+    return render_template(
+    	"mensagem.html",
+    	titulo="Nível alterado com sucesso!",
+    	mensagem="Fique atento(a) ao andamento do seu chamado."
+   )
+
+@app.route("/criar_usuario", methods=["POST"])
+def criar_usuario():
+    if "usuario" not in session or session["tipo"] != "admin":
+        return "Acesso negado!"
+
+    login = request.form["login"]
+    senha = request.form["senha"]
+    tipo = request.form["tipo"]
+
+    conexao = get_db_connection()
+    cursor = conexao.cursor()
+
+    cursor.execute(
+        "INSERT INTO usuarios (login, senha, tipo) VALUES (?, ?, ?)",
+        (login, senha, tipo)
+    )
+
+    conexao.commit()
+    conexao.close()
+
+    return render_template(
+        "mensagem.html",
+        titulo="Usuário criado com sucesso!",
+        mensagem="Novo perfil adicionado ao sistema."
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)

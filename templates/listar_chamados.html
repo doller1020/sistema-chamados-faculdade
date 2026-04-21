@@ -4,10 +4,13 @@
 
 <table border="1">
     <tr>
-        <th>ID</th>
+        <th>ID Chamado</th>
         <th>Título</th>
         <th>Descrição</th>
         <th>Status</th>
+	<th>Usúario</th>
+	<th>Alterar Status</th>
+	<th>Alterar Nível</th>
     </tr>
 
     {% for chamado in chamados %}
@@ -16,6 +19,27 @@
         <td>{{ chamado[1] }}</td>
         <td>{{ chamado[2] }}</td>
         <td>{{ chamado[3] }}</td>
+	<td>{{ chamado[4] }}</td>
+	<td>
+    		<form action="/atualizar_status/{{ chamado[0] }}" method="POST">
+        		<select name="status">
+            			<option value="aberto">Aberto</option>
+            			<option value="em andamento">Em andamento</option>
+            			<option value="finalizado">Finalizado</option>
+        		</select>
+        		<button type="submit">Atualizar</button>
+    		</form>
+	</td>
+	<td>
+  		<form action="/atualizar_nivel/{{ chamado[0] }}" method="POST">
+        		<select name="nivel">
+            			<option value="N1">N1</option>
+            			<option value="N2">N2</option>
+            			<option value="N3">N3</option>
+        		</select>
+        		<button type="submit">Definir</button>
+    		</form>
+	</td>
     </tr>
     {% endfor %}
 </table>
