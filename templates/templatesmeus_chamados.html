@@ -1,0 +1,31 @@
+<a href="/logout">
+    <button>Sair</button>
+</a>
+
+<button onclick="history.back()">Voltar</button>
+
+<h2>Meus Chamados</h2>
+
+<a href="/abrir_chamado">Abrir novo chamado</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Status</th>
+        <th>Nível</th>
+        <th>Data</th>
+    </tr>
+
+    {% for chamado in chamados %}
+    <tr>
+        <td>{{ chamado["id"] }}</td>
+        <td>{{ chamado["titulo"] }}</td>
+        <td>{{ chamado["descricao"] }}</td>
+        <td>{{ chamado["status"] }}</td>
+        <td>{{ chamado["nivel"] }}</td>
+        <td>{{ chamado["data"] }}</td>
+    </tr>
+    {% endfor %}
+</table>

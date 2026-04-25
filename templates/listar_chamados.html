@@ -1,49 +1,109 @@
 <a href="/logout">
     <button>Sair</button>
 </a>
+
 <button onclick="history.back()">Voltar</button>
+
 <h2>Chamados</h2>
 
-<a href="/abrir_chamado">Abrir novo chamado</a>
+<a href="/abrir_chamado">
+    <button>Abrir novo chamado</button>
+</a>
 
+<a href="/meus_chamados">
+    <button>Meus Chamados</button>
+</a>
+
+<br><br>
+
+<h3>Filtrar Chamados</h3>
+
+<form method="GET" action="/chamados">
+
+    <label>Status:</label>
+    <select name="status">
+        <option value="">Todos</option>
+        <option value="aberto">Aberto</option>
+        <option value="em andamento">Em andamento</option>
+        <option value="finalizado">Finalizado</option>
+    </select>
+
+    <label>Nível:</label>
+    <select name="nivel">
+        <option value="">Todos</option>
+        <option value="N1">N1</option>
+        <option value="N2">N2</option>
+        <option value="N3">N3</option>
+    </select>
+
+    <label>Usuário:</label>
+    <input type="text" name="usuario">
+
+    <label>Data:</label>
+    <input type="text" name="data">
+
+    <button type="submit">Filtrar</button>
+
+</form>
+
+<br>
 <table border="1">
     <tr>
-        <th>ID Chamado</th>
+        <th>ID</th>
         <th>Título</th>
         <th>Descrição</th>
         <th>Status</th>
-	<th>Usúario</th>
-	<th>Alterar Status</th>
-	<th>Alterar Nível</th>
+        <th>Nível</th>
+        <th>Data</th>
+        <th>Usuário</th>
+        <th>Ação</th>
+
+        {% if session["tipo"] != "usuario" %}
+            <th>Alterar Status</th>
+            <th>Excluir</th>
+        {% endif %}
     </tr>
 
     {% for chamado in chamados %}
     <tr>
-        <td>{{ chamado[0] }}</td>
-        <td>{{ chamado[1] }}</td>
-        <td>{{ chamado[2] }}</td>
-        <td>{{ chamado[3] }}</td>
-	<td>{{ chamado[4] }}</td>
-	<td>
-    		<form action="/atualizar_status/{{ chamado[0] }}" method="POST">
-        		<select name="status">
-            			<option value="aberto">Aberto</option>
-            			<option value="em andamento">Em andamento</option>
-            			<option value="finalizado">Finalizado</option>
-        		</select>
-        		<button type="submit">Atualizar</button>
-    		</form>
-	</td>
-	<td>
-  		<form action="/atualizar_nivel/{{ chamado[0] }}" method="POST">
-        		<select name="nivel">
-            			<option value="N1">N1</option>
-            			<option value="N2">N2</option>
-            			<option value="N3">N3</option>
-        		</select>
-        		<button type="submit">Definir</button>
-    		</form>
-	</td>
+        <td>{{ chamado["id"] }}</td>
+        <td>{{ chamado["titulo"] }}</td>
+        <td>{{ chamado["descricao"] }}</td>
+        <td>{{ chamado["status"] }}</td>
+        <td>{{ chamado["nivel"] }}</td>
+        <td>{{ chamado["data"] }}</td>
+        <td>{{ chamado["usuario"] }}</td>
+
+        {% if session["tipo"] != "usuario" %}
+        <td>
+            <form action="/atualizar_status/{{ chamado['id'] }}" method="POST">
+                <select name="status">
+                    <option value="aberto">Aberto</option>
+                    <option value="em andamento">Em andamento</option>
+                    <option value="finalizado">Finalizado</option>
+                </select>
+                <button type="submit">Atualizar</button>
+            </form>
+        </td>
+
+        <td>
+            <form action="/atualizar_nivel/{{ chamado['id'] }}" method="POST">
+                <select name="nivel">
+                    <option value="N1">N1</option>
+                    <option value="N2">N2</option>
+                    <option value="N3">N3</option>
+                </select>
+                <button type="submit">Definir</button>
+            </form>
+        </td>
+        {% endif %}
+<td>
+    {% if session["tipo"] != "usuario" or chamado["usuario"] == session["usuario"] %}
+    <form action="/deletar_chamado/{{ chamado['id'] }}" method="POST">
+        <button type="submit">Excluir</button>
+    </form>
+    {% endif %}
+</td>
     </tr>
     {% endfor %}
 </table>
