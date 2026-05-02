@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Gerente</title></head>
+<body>
+
+<h1>Chamados Finalizados</h1>
+
+<a href="/logout">Sair</a>
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Título</th>
+<th>Usuário</th>
+<th>Técnico</th>
+<th>Finalizado em</th>
+</tr>
+
+{% for c in chamados %}
+<tr>
+<td>{{ c["id"] }}</td>
+<td>{{ c["titulo"] }}</td>
+<td>{{ c["usuario"] }}</td>
+<td>{{ c["tecnico_responsavel"] }}</td>
+<td>{{ c["data_finalizacao"] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

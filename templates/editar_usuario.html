@@ -1,0 +1,29 @@
+<a href="/usuarios">
+<button>Voltar</button>
+</a>
+
+<h2>Editar Usuário</h2>
+
+<form method="POST">
+
+Login:<br>
+<input type="text" name="login" value="{{ usuario['login'] }}"><br><br>
+
+Senha:<br>
+<input type="text" name="senha" value="{{ usuario['senha'] }}"><br><br>
+
+Tipo:<br>
+<select name="tipo">
+<option value="usuario">usuario</option>
+<option value="tecnico_n1">tecnico_n1</option>
+<option value="tecnico_n2">tecnico_n2</option>
+<option value="tecnico_n3">tecnico_n3</option>
+<option value="gerente">gerente</option>
+<option value="admin">admin</option>
+</select>
+
+<br><br>
+
+<button type="submit">Salvar</button>
+
+</form>

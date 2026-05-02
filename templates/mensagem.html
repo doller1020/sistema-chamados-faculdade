@@ -8,6 +8,18 @@
 
 <br>
 
+<<<<<<< HEAD
 <a href="/chamados">
     <button>Voltar para chamados</button>
 </a>
+=======
+{% if session["tipo"] == "usuario" %}
+<a href="/meus_chamados">
+    <button>Meus Chamados</button>
+</a>
+{% else %}
+<a href="/chamados">
+    <button>Voltar para chamados</button>
+</a>
+{% endif %}
+>>>>>>> 08da14c (Atualização completa sistema chamados)

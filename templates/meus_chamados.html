@@ -2,6 +2,7 @@
     <button>Sair</button>
 </a>
 
+<<<<<<< HEAD
 <button onclick="history.back()">Voltar</button>
 
 <h2>Meus Chamados</h2>
@@ -11,6 +12,13 @@
 </a>
 
 <br><br>
+=======
+<a href="/abrir_chamado">
+    <button>Voltar</button>
+</a>
+
+<h2>Meus Chamados</h2>
+>>>>>>> 08da14c (Atualização completa sistema chamados)
 
 <table border="1">
     <tr>
@@ -18,8 +26,14 @@
         <th>Título</th>
         <th>Descrição</th>
         <th>Status</th>
+<<<<<<< HEAD
         <th>Nível</th>
         <th>Data</th>
+=======
+        <th>Técnico</th>
+        <th>Resposta</th>
+        <th>Data Abertura</th>
+>>>>>>> 08da14c (Atualização completa sistema chamados)
     </tr>
 
     {% for chamado in chamados %}
@@ -28,8 +42,14 @@
         <td>{{ chamado["titulo"] }}</td>
         <td>{{ chamado["descricao"] }}</td>
         <td>{{ chamado["status"] }}</td>
+<<<<<<< HEAD
         <td>{{ chamado["nivel"] }}</td>
         <td>{{ chamado["data"] }}</td>
+=======
+        <td>{{ chamado["tecnico_responsavel"] }}</td>
+        <td>{{ chamado["resposta_tecnica"] }}</td>
+        <td>{{ chamado["data_abertura"] }}</td>
+>>>>>>> 08da14c (Atualização completa sistema chamados)
     </tr>
     {% endfor %}
 </table>
