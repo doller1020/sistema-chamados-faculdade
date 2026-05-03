@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuário</title>
+</head>
+<body>
+
+    <a href="/usuarios">
+        <button>Voltar</button>
+    </a>
+
+    <h2>Editar Usuário</h2>
+
+    <form method="POST">
+
+        <label>Login:</label><br>
+        <input type="text" name="login" value="{{ usuario['login'] }}" required>
+        <br><br>
+
+        <label>Senha:</label><br>
+        <input type="text" name="senha" value="{{ usuario['senha'] }}" required>
+        <br><br>
+
+        <label>Tipo:</label><br>
+        <select name="tipo" required>
+
+            <option value="usuario" {% if usuario['tipo'] == 'usuario' %}selected{% endif %}>Usuário</option>
+            <option value="tecnico_n1" {% if usuario['tipo'] == 'tecnico_n1' %}selected{% endif %}>Técnico N1</option>
+            <option value="tecnico_n2" {% if usuario['tipo'] == 'tecnico_n2' %}selected{% endif %}>Técnico N2</option>
+            <option value="tecnico_n3" {% if usuario['tipo'] == 'tecnico_n3' %}selected{% endif %}>Técnico N3</option>
+            <option value="gerente" {% if usuario['tipo'] == 'gerente' %}selected{% endif %}>Gerente</option>
+            <option value="admin" {% if usuario['tipo'] == 'admin' %}selected{% endif %}>Admin</option>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">Salvar Alterações</button>
+
+    </form>
+
+</body>
+</html>

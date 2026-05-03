@@ -1,0 +1,29 @@
+<a href="/logout">
+    <button>Sair</button>
+</a>
+
+<button onclick="history.back()">Voltar</button>
+
+<h2>Usuários cadastrados</h2>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Login</th>
+        <th>Tipo</th>
+        <th>Ação</th>
+    </tr>
+
+    {% for usuario in usuarios %}
+    <tr>
+        <td>{{ usuario["id"] }}</td>
+        <td>{{ usuario["login"] }}</td>
+        <td>{{ usuario["tipo"] }}</td>
+        <td>
+            <form action="/deletar_usuario/{{ usuario['id'] }}" method="POST">
+                <button type="submit">Excluir</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

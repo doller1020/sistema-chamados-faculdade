@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerenciar Usuários</title>
+</head>
+<body>
+
+<a href="/logout">
+    <button>Sair</button>
+</a>
+
+<a href="/admin">
+    <button>Voltar</button>
+</a>
+
+<h1>Gerenciar Usuários</h1>
+
+<table border="1" cellpadding="8">
+
+<tr>
+    <th>ID</th>
+    <th>Login</th>
+    <th>Tipo</th>
+    <th>Ações</th>
+</tr>
+
+{% for usuario in usuarios %}
+<tr>
+    <td>{{ usuario["id"] }}</td>
+    <td>{{ usuario["login"] }}</td>
+    <td>{{ usuario["tipo"] }}</td>
+    <td>
+
+        <a href="/editar_usuario/{{ usuario['id'] }}">
+            <button>Editar</button>
+        </a>
+
+        <form action="/deletar_usuario/{{ usuario['id'] }}" method="POST" style="display:inline;">
+            <button type="submit" onclick="return confirm('Deseja excluir?')">
+                Excluir
+            </button>
+        </form>
+
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

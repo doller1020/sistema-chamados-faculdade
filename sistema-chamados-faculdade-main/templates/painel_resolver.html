@@ -1,0 +1,30 @@
+<a href="/logout">
+    <button>Sair</button>
+</a>
+
+<a href="/chamados">
+    <button>Voltar</button>
+</a>
+
+<h2>Resolver Chamado #{{ chamado["id"] }}</h2>
+
+<p><b>Título:</b> {{ chamado["titulo"] }}</p>
+<p><b>Descrição:</b> {{ chamado["descricao"] }}</p>
+
+<form method="POST">
+
+<textarea name="resposta" rows="6" cols="50" placeholder="Digite a solução"></textarea>
+
+<br><br>
+
+<button formaction="/finalizar/{{ chamado['id'] }}">
+    Finalizar Chamado
+</button>
+
+{% if session["tipo"] != "tecnico_n3" %}
+<button formaction="/encaminhar/{{ chamado['id'] }}">
+    Encaminhar Próximo Nível
+</button>
+{% endif %}
+
+</form>
