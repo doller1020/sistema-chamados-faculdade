@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Painel Admin</title>
+</head>
+<body>
+
+<a href="/logout">
+    <button>Sair</button>
+</a>
+
+<a href="/admin">
+    <button>Voltar</button>
+</a>
+
+<h1>Painel do Administrador</h1>
+
+<br>
+
+<a href="/usuarios">
+    <button>Gerenciar Usuários</button>
+</a>
+
+<h2>Criar Usuário</h2>
+
+<form method="POST" action="/criar_usuario">
+
+    <label>Login:</label><br>
+    <input type="text" name="login" required><br><br>
+
+    <label>Senha:</label><br>
+    <input type="text" name="senha" required><br><br>
+
+    <label>Tipo:</label><br>
+
+    <select name="tipo">
+        <option value="usuario">Usuário</option>
+        <option value="tecnico_n1">Técnico N1</option>
+        <option value="tecnico_n2">Técnico N2</option>
+        <option value="tecnico_n3">Técnico N3</option>
+        <option value="gerente">Gerente</option>
+        <option value="admin">Admin</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Criar</button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<a href="/logout">
+    <button>Sair</button>
+</a>
+<button onclick="history.back()">Voltar</button>
+<h1>{{ titulo }}</h1>
+
+<p>{{ mensagem }}</p>
+
+<br>
+
+{% if session["tipo"] == "usuario" %}
+<a href="/meus_chamados">
+    <button>Meus Chamados</button>
+</a>
+{% else %}
+<a href="/chamados">
+    <button>Voltar para chamados</button>
+</a>
+{% endif %}

@@ -1,0 +1,11 @@
+ Relatório do Projeto – Sistema de Chamados
+
+Este projeto foi desenvolvido em conjunto por Wingrid e Doller.
+
+Desde o início, ambos participaram ativamente do desenvolvimento do sistema utilizando a máquina do Doller, contribuindo na construção do código, na estruturação das funcionalidades e na resolução de problemas. Por esse motivo, as primeiras versões do projeto — incluindo a implementação do login com diferentes perfis (usuário, técnico e administrador), abertura e listagem de chamados, além das funcionalidades de status e nível — foram desenvolvidas de forma colaborativa no ambiente dele.
+
+Durante essa fase inicial, as atualizações foram enviadas através do GitHub do Doller.
+
+A partir desta etapa, as próximas melhorias e evoluções do sistema passarão a ser realizadas e versionadas através do GitHub da Wingrid, mantendo o trabalho em equipe e a continuidade do projeto.
+
+O sistema segue em desenvolvimento, com novos recursos planejados para aprimorar sua funcionalidade e usabilidade.

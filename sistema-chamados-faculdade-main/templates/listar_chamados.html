@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head><title>Fila Técnicos</title></head>
+<body>
+
+<h1>Chamados Pendentes</h1>
+
+<a href="/logout">Sair</a>
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Título</th>
+<th>Usuário</th>
+<th>Status</th>
+<th>Nível</th>
+<th>Ação</th>
+</tr>
+
+{% for c in chamados %}
+<tr>
+<td>{{ c["id"] }}</td>
+<td>{{ c["titulo"] }}</td>
+<td>{{ c["usuario"] }}</td>
+<td>{{ c["status"] }}</td>
+<td>{{ c["nivel"] }}</td>
+
+<td>
+<a href="/resolver/{{ c['id'] }}">
+<button>Resolver</button>
+</a>
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

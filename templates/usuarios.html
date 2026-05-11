@@ -1,0 +1,36 @@
+<a href="/admin">
+<button>Voltar</button>
+</a>
+
+<h2>Usuários do Sistema</h2>
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Login</th>
+<th>Tipo</th>
+<th>Ações</th>
+</tr>
+
+{% for u in usuarios %}
+<tr>
+<td>{{ u["id"] }}</td>
+<td>{{ u["login"] }}</td>
+<td>{{ u["tipo"] }}</td>
+
+<td>
+
+<a href="/editar_usuario/{{ u['id'] }}">
+<button>Editar</button>
+</a>
+
+<a href="/excluir_usuario/{{ u['id'] }}">
+<button>Excluir</button>
+</a>
+
+</td>
+</tr>
+{% endfor %}
+
+</table>

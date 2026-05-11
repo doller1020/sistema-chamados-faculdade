@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chamados</title>
+</head>
+
+<body>
+
+<a href="/logout">
+    <button>Sair</button>
+</a>
+
+<button onclick="history.back()">Voltar</button>
+
+<h2>Chamados</h2>
+
+<a href="/abrir_chamado">
+    <button>Abrir novo chamado</button>
+</a>
+
+<a href="/meus_chamados">
+    <button>Meus Chamados</button>
+</a>
+
+<br><br>
+
+<!-- FILTRO ORDEM -->
+<form method="GET" action="/chamados">
+
+    <label>Ordenar:</label>
+
+    <select name="ordem">
+        <option value="recente">Mais recentes</option>
+        <option value="antigo">Mais antigos</option>
+    </select>
+
+    <button type="submit">Aplicar</button>
+
+</form>
+
+<br>
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Título</th>
+    <th>Descrição</th>
+    <th>Usuário</th>
+    <th>Status</th>
+    <th>Nível</th>
+    <th>Data Abertura</th>
+    <th>Técnico</th>
+    <th>Ação</th>
+    <th>Excluir</th>
+</tr>
+
+{% for c in chamados %}
+<tr>
+
+<td>{{ c["id"] }}</td>
+
+<td>{{ c["titulo"] or "" }}</td>
+
+<td>{{ c["descricao"] or "" }}</td>
+
+<td>{{ c["usuario"] or "" }}</td>
+
+<td>{{ c["status"] or "" }}</td>
+
+<td>{{ c["nivel"] or "" }}</td>
+
+<td>{{ c["data_abertura"] or "" }}</td>
+
+<td>{{ c["tecnico_responsavel"] or "" }}</td>
+
+<td>
+<a href="/resolver/{{ c['id'] }}">
+    <button>Resolver</button>
+</a>
+</td>
+
+<td>
+<form action="/deletar_chamado/{{ c['id'] }}" method="POST">
+    <button type="submit">Excluir</button>
+</form>
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
