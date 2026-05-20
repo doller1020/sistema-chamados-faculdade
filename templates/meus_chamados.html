@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Meus Chamados</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<a href="/logout">
+    <button>Sair</button>
+</a>
+
+<a href="/abrir_chamado">
+    <button>Abrir Chamado</button>
+</a>
+
+<br><br>
+
+<button onclick="history.back()">Voltar</button>
+
+<h2>Meus Chamados</h2>
+
+<br>
+
+<!-- FILTRO -->
+<form method="GET" action="/meus_chamados">
+
+    <label>Ordenar:</label>
+
+    <select name="ordem">
+        <option value="recente">Mais recentes</option>
+        <option value="antigo">Mais antigos</option>
+    </select>
+
+    <button type="submit">Aplicar</button>
+
+</form>
+
+<br>
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Título</th>
+    <th>Descrição</th>
+    <th>Status</th>
+    <th>Nível</th>
+    <th>Técnico</th>
+    <th>Resposta Técnica</th>
+    <th>Data Abertura</th>
+    <th>Data Atendimento</th>
+    <th>Data Finalização</th>
+</tr>
+
+{% for chamado in chamados %}
+<tr>
+
+    <td>{{ chamado["id"] }}</td>
+
+    <td>{{ chamado["titulo"] or "" }}</td>
+
+    <td>{{ chamado["descricao"] or "" }}</td>
+
+    <td>{{ chamado["status"] or "" }}</td>
+
+    <td>{{ chamado["nivel"] or "" }}</td>
+
+    <td>{{ chamado["tecnico_responsavel"] or "" }}</td>
+
+    <td>{{ chamado["resposta_tecnica"] or "" }}</td>
+
+    <td>{{ chamado["data_abertura"] or "" }}</td>
+
+    <td>{{ chamado["data_atendimento"] or "" }}</td>
+
+    <td>{{ chamado["data_finalizacao"] or "" }}</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

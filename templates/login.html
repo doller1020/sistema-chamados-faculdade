@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- CONTAINER CENTRAL -->
+    <div class="login-container">
+
+        <!-- CARD LOGIN -->
+        <div class="login-card">
+
+            <h1>Help Desk</h1>
+
+            <form method="POST">
+
+                <label>Usuário:</label><br>
+                <input type="text" name="usuario" required>
+
+                <br><br>
+
+                <label>Senha:</label><br>
+                <input type="password" name="senha" required>
+
+                <br><br>
+
+                <button type="submit">Entrar</button>
+
+            </form>
+
+            <!-- MENSAGENS -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+
+                    <div class="mensagem">
+
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+            {% endwith %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>

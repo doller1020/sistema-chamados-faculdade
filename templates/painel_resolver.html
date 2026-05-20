@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Resolver Chamado</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="topo">
+
+        <a href="/logout">
+            <button>Sair</button>
+        </a>
+
+        <a href="/chamados">
+            <button>Voltar</button>
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Resolver Chamado #{{ chamado["id"] }}</h2>
+
+        <p><b>Título:</b> {{ chamado["titulo"] or "" }}</p>
+
+        <p><b>Descrição:</b> {{ chamado["descricao"] or "" }}</p>
+
+        <form method="POST">
+
+            <textarea
+                name="resposta"
+                rows="6"
+                placeholder="Digite a solução"></textarea>
+
+            <br><br>
+
+            <button formaction="/finalizar/{{ chamado['id'] }}">
+                Finalizar Chamado
+            </button>
+
+            {% if session["tipo"] != "tecnico_n3" %}
+
+            <button formaction="/encaminhar/{{ chamado['id'] }}">
+                Encaminhar Próximo Nível
+            </button>
+
+            {% endif %}
+
+        </form>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+/* ================= GERAL ================= */
+
+body{
+    background-color: #0f172a;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ================= TOPO ================= */
+
+.topo{
+    background-color: #020617;
+
+    padding: 15px 25px;
+
+    border-bottom: 3px solid #2563eb;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* ================= TÍTULOS ================= */
+
+h1, h2, h3{
+    color: #60a5fa;
+    margin-left: 20px;
+}
+
+/* ================= BOTÕES ================= */
+
+button{
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: #1d4ed8;
+    transform: scale(1.03);
+}
+
+/* ================= LINKS ================= */
+
+a{
+    text-decoration: none;
+}
+
+/* ================= FORMULÁRIOS ================= */
+
+form{
+    margin: 20px;
+}
+
+input, textarea, select{
+    width: 300px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background-color: #1e293b;
+    color: white;
+    box-sizing: border-box;
+}
+
+textarea{
+    resize: vertical;
+}
+
+/* ================= TABELAS ================= */
+
+table{
+    width: 95%;
+    margin: 20px;
+    border-collapse: collapse;
+    background-color: #111827;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th{
+    background-color: #2563eb;
+    color: white;
+    padding: 12px;
+}
+
+td{
+    padding: 10px;
+    border-bottom: 1px solid #1e293b;
+}
+
+tr:hover{
+    background-color: #1e293b;
+}
+
+/* ================= CARDS ================= */
+
+.card{
+    background-color: #111827;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+/* ================= MENSAGENS ================= */
+
+.mensagem{
+    background-color: #1e293b;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 8px;
+}
+
+/* ================= LOGIN CENTRALIZADO ================= */
+
+.login-container{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card{
+    background-color: #111827;
+
+    width: 350px;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+
+    text-align: center;
+}
+
+.login-card h1{
+    margin-left: 0;
+    margin-bottom: 30px;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+
+@media(max-width: 768px){
+
+    .topo{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    input,
+    textarea,
+    select{
+        width: 100%;
+    }
+
+    table{
+        display: block;
+        overflow-x: auto;
+    }
+
+    .card{
+        margin: 10px;
+    }
+}

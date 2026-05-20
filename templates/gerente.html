@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gerente</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="topo">
+
+        <a href="/logout">
+            <button>Sair</button>
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h1>Chamados Finalizados</h1>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Usuário</th>
+                <th>Técnico</th>
+                <th>Finalizado em</th>
+            </tr>
+
+            {% for c in chamados %}
+            <tr>
+                <td>{{ c["id"] }}</td>
+                <td>{{ c["titulo"] or "" }}</td>
+                <td>{{ c["usuario"] or "" }}</td>
+                <td>{{ c["tecnico_responsavel"] or "" }}</td>
+                <td>{{ c["data_finalizacao"] or "" }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+</html>
