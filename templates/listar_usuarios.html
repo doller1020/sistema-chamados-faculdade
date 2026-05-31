@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Usuários Cadastrados</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="topo">
+
+        <a href="/logout">
+            <button>Sair</button>
+        </a>
+
+        <button onclick="history.back()">Voltar</button>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Usuários cadastrados</h2>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Login</th>
+                <th>Tipo</th>
+                <th>Ação</th>
+            </tr>
+
+            {% for usuario in usuarios %}
+            <tr>
+
+                <td>{{ usuario["id"] }}</td>
+                <td>{{ usuario["login"] }}</td>
+                <td>{{ usuario["tipo"] }}</td>
+
+                <td>
+                    <form action="/deletar_usuario/{{ usuario['id'] }}" method="POST">
+                        <button type="submit">Excluir</button>
+                    </form>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+</html>

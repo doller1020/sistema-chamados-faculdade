@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mensagem</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="topo">
+
+        <a href="/logout">
+            <button>Sair</button>
+        </a>
+
+        <button onclick="history.back()">Voltar</button>
+
+    </div>
+
+    <div class="card">
+
+        <h1>{{ titulo }}</h1>
+
+        <p>{{ mensagem }}</p>
+
+        <br>
+
+        <a href="/meus_chamados">
+            <button>Meus Chamados</button>
+        </a>
+
+    </div>
+
+</body>
+</html>

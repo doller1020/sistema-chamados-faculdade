@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Editar Usuário</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="topo">
+
+        <a href="/usuarios">
+            <button>Voltar</button>
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Editar Usuário</h2>
+
+        <form method="POST">
+
+            <label>Login:</label><br>
+            <input type="text" name="login" value="{{ usuario['login'] }}"><br><br>
+
+            <label>Senha:</label><br>
+            <input type="text" name="senha" value="{{ usuario['senha'] }}"><br><br>
+
+            <label>Tipo:</label><br>
+
+            <select name="tipo">
+                <option value="usuario">Usuário</option>
+                <option value="tecnico_n1">Técnico N1</option>
+                <option value="tecnico_n2">Técnico N2</option>
+                <option value="tecnico_n3">Técnico N3</option>
+                <option value="gerente">Gerente</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <br><br>
+
+            <button type="submit">Salvar</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

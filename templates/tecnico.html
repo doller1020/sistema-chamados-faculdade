@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Painel Técnico</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="topo">
+
+        <a href="/logout">
+            <button>Sair</button>
+        </a>
+
+        <button onclick="history.back()">Voltar</button>
+
+    </div>
+
+    <div class="card">
+
+        <h1>Painel do Técnico</h1>
+
+        <a href="/chamados">
+            <button>Ver Chamados</button>
+        </a>
+
+    </div>
+
+</body>
+</html>

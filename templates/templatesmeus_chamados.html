@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Meus Chamados</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="topo">
+
+        <a href="/logout">
+            <button>Sair</button>
+        </a>
+
+        <button onclick="history.back()">Voltar</button>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Meus Chamados</h2>
+
+        <a href="/abrir_chamado">
+            <button>Abrir novo chamado</button>
+        </a>
+
+        <br><br>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Status</th>
+                <th>Nível</th>
+                <th>Data</th>
+            </tr>
+
+            {% for chamado in chamados %}
+            <tr>
+
+                <td>{{ chamado["id"] }}</td>
+                <td>{{ chamado["titulo"] or "" }}</td>
+                <td>{{ chamado["descricao"] or "" }}</td>
+                <td>{{ chamado["status"] or "" }}</td>
+                <td>{{ chamado["nivel"] or "" }}</td>
+                <td>{{ chamado["data"] or "" }}</td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+</html>
