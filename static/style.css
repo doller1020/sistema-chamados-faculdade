@@ -176,6 +176,7 @@ tr:hover{
     .card{
         margin: 10px;
     }
+<<<<<<< HEAD
 }
 
 /* ================= USUÁRIO LOGADO ================= */
@@ -195,4 +196,6 @@ tr:hover{
     font-size: 14px;
 
     box-shadow: 0px 0px 8px rgba(0,0,0,0.4);
+=======
+>>>>>>> 7375e5df151be5a526b72652906629be08cba034
 }

@@ -9,12 +9,15 @@
 
 <body>
 
+<<<<<<< HEAD
 <div class="usuario-logado">
 
     👤 {{ session["usuario"] }}
 
 </div>
 
+=======
+>>>>>>> 7375e5df151be5a526b72652906629be08cba034
 <a href="/logout">
     <button>Sair</button>
 </a>
@@ -37,6 +40,7 @@
     <label>Ordenar:</label>
 
     <select name="ordem">
+<<<<<<< HEAD
 
     	<option value="recente"
     	{% if request.args.get('ordem') != 'antigo' %}
@@ -53,6 +57,10 @@
     	>
     	Mais antigos
     	</option>
+=======
+        <option value="recente">Mais recentes</option>
+        <option value="antigo">Mais antigos</option>
+>>>>>>> 7375e5df151be5a526b72652906629be08cba034
     </select>
 
     <button type="submit">Aplicar</button>
