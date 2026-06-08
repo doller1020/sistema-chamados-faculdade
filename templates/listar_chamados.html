@@ -3,125 +3,149 @@
 
 <head>
     <title>Chamados</title>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-<<<<<<< HEAD
-<div class="usuario-logado">
+    <div class="topo">
 
-    👤 {{ session["usuario"] }}
+        <div class="logo">
+            Help Desk
+        </div>
 
-</div>
+        <div class="usuario-menu">
 
-=======
->>>>>>> 7375e5df151be5a526b72652906629be08cba034
-<a href="/logout">
-    <button>Sair</button>
-</a>
+            <button class="usuario-btn" onclick="toggleMenu()">
+                👤 {{ session["usuario"] }}
+            </button>
 
-<button onclick="history.back()">Voltar</button>
+            <div id="menuUsuario" class="dropdown">
 
-<h2>Chamados</h2>
+                <a href="/alterar_senha">
+                    🔒 Alterar Senha
+                </a>
 
-<a href="/abrir_chamado">
-    <button>Abrir novo chamado</button>
-</a>
+                <a href="/logout">
+                    🚪 Sair da Sessão
+                </a>
 
-<a href="/meus_chamados">
-    <button>Meus Chamados</button>
-</a>
+            </div>
 
-<br><br>
+        </div>
 
-<!-- FILTRO ORDEM -->
-<form method="GET" action="/chamados">
+    </div>
 
-    <label>Ordenar:</label>
+    <button onclick="history.back()">Voltar</button>
 
-    <select name="ordem">
-<<<<<<< HEAD
+    <h2>Chamados</h2>
 
-    	<option value="recente"
-    	{% if request.args.get('ordem') != 'antigo' %}
-    	selected
-    	{% endif %}
-    	>
-    	Mais recentes
-    	</option>
+    <a href="/abrir_chamado">
+        <button>Abrir novo chamado</button>
+    </a>
 
-    	<option value="antigo"
-    	{% if request.args.get('ordem') == 'antigo' %}
-    	selected
-   	 {% endif %}
-    	>
-    	Mais antigos
-    	</option>
+    <a href="/meus_chamados">
+        <button>Meus Chamados</button>
+    </a>
 
-=======
-        <option value="recente">Mais recentes</option>
-        <option value="antigo">Mais antigos</option>
->>>>>>> 7375e5df151be5a526b72652906629be08cba034
-    </select>
+    <br><br>
 
-    <button type="submit">Aplicar</button>
+    <!-- FILTRO ORDEM -->
+    <form method="GET" action="/chamados">
 
-</form>
+        <label>Ordenar:</label>
 
-<br>
+        <select name="ordem">
 
-<table border="1">
+            <option value="recente"
+                {% if request.args.get('ordem') != 'antigo' %}
+                selected
+                {% endif %}>
+                Mais recentes
+            </option>
 
-<tr>
-    <th>ID</th>
-    <th>Título</th>
-    <th>Descrição</th>
-    <th>Usuário</th>
-    <th>Status</th>
-    <th>Nível</th>
-    <th>Data Abertura</th>
-    <th>Técnico</th>
-    <th>Ação</th>
-    <th>Excluir</th>
-</tr>
+            <option value="antigo"
+                {% if request.args.get('ordem') == 'antigo' %}
+                selected
+                {% endif %}>
+                Mais antigos
+            </option>
 
-{% for c in chamados %}
-<tr>
+        </select>
 
-<td>{{ c["id"] }}</td>
+        <button type="submit">Aplicar</button>
 
-<td>{{ c["titulo"] or "" }}</td>
+    </form>
 
-<td>{{ c["descricao"] or "" }}</td>
+    <br>
 
-<td>{{ c["usuario"] or "" }}</td>
+    <table border="1">
 
-<td>{{ c["status"] or "" }}</td>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Usuário</th>
+            <th>Status</th>
+            <th>Nível</th>
+            <th>Data Abertura</th>
+            <th>Técnico</th>
+            <th>Ação</th>
+            <th>Excluir</th>
+        </tr>
 
-<td>{{ c["nivel"] or "" }}</td>
+        {% for c in chamados %}
+        <tr>
 
-<td>{{ c["data_abertura"] or "" }}</td>
+            <td>{{ c["id"] }}</td>
 
-<td>{{ c["tecnico_responsavel"] or "" }}</td>
+            <td>{{ c["titulo"] or "" }}</td>
 
-<td>
-<a href="/resolver/{{ c['id'] }}">
-    <button>Resolver</button>
-</a>
-</td>
+            <td>{{ c["descricao"] or "" }}</td>
 
-<td>
-<form action="/deletar_chamado/{{ c['id'] }}" method="POST">
-    <button type="submit">Excluir</button>
-</form>
-</td>
+            <td>{{ c["usuario"] or "" }}</td>
 
-</tr>
-{% endfor %}
+            <td>{{ c["status"] or "" }}</td>
 
-</table>
+            <td>{{ c["nivel"] or "" }}</td>
+
+            <td>{{ c["data_abertura"] or "" }}</td>
+
+            <td>{{ c["tecnico_responsavel"] or "" }}</td>
+
+            <td>
+                <a href="/resolver/{{ c['id'] }}">
+                    <button>Resolver</button>
+                </a>
+            </td>
+
+            <td>
+                <form action="/deletar_chamado/{{ c['id'] }}" method="POST">
+                    <button type="submit">Excluir</button>
+                </form>
+            </td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <script>
+
+        function toggleMenu() {
+            document.getElementById("menuUsuario").classList.toggle("show");
+        }
+
+        window.addEventListener("pageshow", function(event) {
+
+            if (event.persisted) {
+                window.location.reload();
+            }
+
+        });
+
+    </script>
 
 </body>
+
 </html>

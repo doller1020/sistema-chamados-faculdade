@@ -1,18 +1,10 @@
 import sqlite3
-<<<<<<< HEAD
 
-# Conecta (ou cria) o banco de dados
+# ================= CONEXÃO =================
 conexao = sqlite3.connect("database.db")
 cursor = conexao.cursor()
 
-# Criação da tabela de usuários
-=======
-# Conecta ou cria banco
-conexao = sqlite3.connect("database.db")
-cursor = conexao.cursor()
-
-# ================= USUÁRIOS =================
->>>>>>> 08da14c (Atualização completa sistema chamados)
+# ================= TABELA USUÁRIOS =================
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -21,30 +13,15 @@ CREATE TABLE IF NOT EXISTS usuarios (
     tipo TEXT NOT NULL
 )
 """)
-<<<<<<< HEAD
-# Criação da tabela de chamados
-=======
 
-# ================= CHAMADOS =================
->>>>>>> 08da14c (Atualização completa sistema chamados)
+# ================= TABELA CHAMADOS =================
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS chamados (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    titulo TEXT NOT NULL,
-    descricao TEXT NOT NULL,
-    status TEXT NOT NULL,
-<<<<<<< HEAD
-    usuario TEXT NOT NULL
-)
-""")
-
-# Inserção de usuários padrão
-usuarios = [
-    ("admin", "admin123", "administrador"),
-    ("wingrid", "1234", "usuario"),
-    ("doller", "1234", "tecnico")
-=======
-    usuario TEXT NOT NULL,
+    titulo TEXT,
+    descricao TEXT,
+    status TEXT,
+    usuario TEXT,
     nivel TEXT,
     tecnico_responsavel TEXT,
     resposta_tecnica TEXT,
@@ -63,7 +40,6 @@ usuarios = [
     ("tecnico2", "1234", "tecnico_n2"),
     ("tecnico3", "1234", "tecnico_n3"),
     ("gerente", "1234", "gerente")
->>>>>>> 08da14c (Atualização completa sistema chamados)
 ]
 
 for usuario in usuarios:
@@ -73,29 +49,17 @@ for usuario in usuarios:
             usuario
         )
     except sqlite3.IntegrityError:
-<<<<<<< HEAD
-        pass  # evita erro se o usuário já existir
+        pass  # evita duplicação
 
-# Salva e fecha
+# ================= FINALIZAÇÃO =================
 conexao.commit()
 conexao.close()
 
 print("Banco de dados criado com sucesso!")
-print("Usuários cadastrados: administrador, usuário e técnico.")
-
-=======
-        pass
-
-# Salvar
-conexao.commit()
-conexao.close()
-
-print("Banco criado com sucesso!")
-print("Perfis criados:")
-print("admin / 123")
-print("wingrid / 1234")
-print("tecnico1 / 1234")
-print("tecnico2 / 1234")
-print("tecnico3 / 1234")
-print("gerente / 1234")
->>>>>>> 08da14c (Atualização completa sistema chamados)
+print("Usuários padrão:")
+print("- admin / 123")
+print("- wingrid / 1234")
+print("- tecnico1 / 1234")
+print("- tecnico2 / 1234")
+print("- tecnico3 / 1234")
+print("- gerente / 1234")

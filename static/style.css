@@ -12,18 +12,24 @@ body{
 
 .topo{
     background-color: #020617;
-
     padding: 15px 25px;
-
     border-bottom: 3px solid #2563eb;
 
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 12px;
 
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+
+/* ================= LOGO ================= */
+
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+    color: #60a5fa;
 }
 
 /* ================= TÍTULOS ================= */
@@ -63,7 +69,9 @@ form{
     margin: 20px;
 }
 
-input, textarea, select{
+input,
+textarea,
+select{
     width: 300px;
     padding: 10px;
     border-radius: 8px;
@@ -123,7 +131,7 @@ tr:hover{
     border-radius: 8px;
 }
 
-/* ================= LOGIN CENTRALIZADO ================= */
+/* ================= LOGIN ================= */
 
 .login-container{
     width: 100%;
@@ -136,15 +144,10 @@ tr:hover{
 
 .login-card{
     background-color: #111827;
-
     width: 350px;
-
     padding: 40px;
-
     border-radius: 15px;
-
     box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
-
     text-align: center;
 }
 
@@ -153,13 +156,82 @@ tr:hover{
     margin-bottom: 30px;
 }
 
+/* ================= MENU USUÁRIO ================= */
+
+.usuario-menu{
+    position: relative;
+    margin-left: auto;
+}
+
+.usuario-btn{
+    background-color: #1e293b;
+}
+
+.usuario-btn:hover{
+    background-color: #334155;
+}
+
+.dropdown{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+
+    background-color: #111827;
+
+    min-width: 200px;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    border: 1px solid #334155;
+
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+
+    z-index: 999;
+}
+
+.dropdown a{
+    display: block;
+    padding: 12px 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown a:hover{
+    background-color: #2563eb;
+}
+
+.show{
+    display: block;
+}
+
+/* ================= USUÁRIO LOGADO ================= */
+
+.usuario-logado{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+
+    background-color: #1e293b;
+    padding: 10px 15px;
+
+    border-radius: 10px;
+    border: 1px solid #2563eb;
+
+    font-size: 14px;
+
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.4);
+}
+
 /* ================= RESPONSIVIDADE ================= */
 
-@media(max-width: 768px){
+@media (max-width: 768px){
 
     .topo{
         flex-wrap: wrap;
         justify-content: center;
+        gap: 10px;
     }
 
     input,
@@ -176,26 +248,9 @@ tr:hover{
     .card{
         margin: 10px;
     }
-<<<<<<< HEAD
-}
 
-/* ================= USUÁRIO LOGADO ================= */
-
-.usuario-logado{
-    position: absolute;
-    top: 15px;
-    right: 20px;
-
-    background-color: #1e293b;
-    padding: 10px 15px;
-
-    border-radius: 10px;
-
-    border: 1px solid #2563eb;
-
-    font-size: 14px;
-
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.4);
-=======
->>>>>>> 7375e5df151be5a526b72652906629be08cba034
+    .login-card{
+        width: 90%;
+        padding: 25px;
+    }
 }

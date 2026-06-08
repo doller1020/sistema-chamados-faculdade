@@ -3,7 +3,6 @@
 
 <head>
     <title>Painel Técnico</title>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -11,13 +10,33 @@
 
     <div class="topo">
 
-        <a href="/logout">
-            <button>Sair</button>
-        </a>
+        <div class="logo">
+            Help Desk
+        </div>
 
-        <button onclick="history.back()">Voltar</button>
+        <div class="usuario-menu">
+
+            <button class="usuario-btn" onclick="toggleMenu()">
+                👤 {{ session["usuario"] }}
+            </button>
+
+            <div id="menuUsuario" class="dropdown">
+
+                <a href="/alterar_senha">
+                    🔒 Alterar Senha
+                </a>
+
+                <a href="/logout">
+                    🚪 Sair da Sessão
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
+
+    <button onclick="history.back()">Voltar</button>
 
     <div class="card">
 
@@ -29,5 +48,22 @@
 
     </div>
 
+    <script>
+
+        function toggleMenu() {
+            document.getElementById("menuUsuario").classList.toggle("show");
+        }
+
+        window.addEventListener("pageshow", function(event) {
+
+            if (event.persisted) {
+                window.location.reload();
+            }
+
+        });
+
+    </script>
+
 </body>
+
 </html>

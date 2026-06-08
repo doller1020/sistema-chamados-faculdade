@@ -3,114 +3,139 @@
 
 <head>
     <title>Meus Chamados</title>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-<<<<<<< HEAD
-<div class="usuario-logado">
+    <div class="topo">
 
-    👤 {{ session["usuario"] }}
+        <div class="logo">
+            Help Desk
+        </div>
 
-</div>
+        <div class="usuario-menu">
 
-=======
->>>>>>> 7375e5df151be5a526b72652906629be08cba034
-<a href="/logout">
-    <button>Sair</button>
-</a>
+            <button class="usuario-btn" onclick="toggleMenu()">
+                👤 {{ session["usuario"] }}
+            </button>
 
-<a href="/abrir_chamado">
-    <button>Abrir Chamado</button>
-</a>
+            <div id="menuUsuario" class="dropdown">
 
-<br><br>
+                <a href="/alterar_senha">
+                    🔒 Alterar Senha
+                </a>
 
-<button onclick="history.back()">Voltar</button>
+                <a href="/logout">
+                    🚪 Sair da Sessão
+                </a>
 
-<h2>Meus Chamados</h2>
+            </div>
 
-<br>
+        </div>
 
-<!-- FILTRO -->
-<form method="GET" action="/meus_chamados">
+    </div>
 
-    <label>Ordenar:</label>
+    <a href="/abrir_chamado">
+        <button>Abrir Chamado</button>
+    </a>
 
-    <select name="ordem">
-<<<<<<< HEAD
+    <br><br>
 
-    	<option value="recente"
-    	{% if request.args.get('ordem') != 'antigo' %}
-    	selected
-    	{% endif %}
-    	>
-    	Mais recentes
-   	</option>
+    <button onclick="history.back()">Voltar</button>
 
-    	<option value="antigo"
-    	{% if request.args.get('ordem') == 'antigo' %}
-    	selected
-    	{% endif %}
-    	>
-    	Mais antigos
-    	</option>
-=======
-        <option value="recente">Mais recentes</option>
-        <option value="antigo">Mais antigos</option>
->>>>>>> 7375e5df151be5a526b72652906629be08cba034
-    </select>
+    <h2>Meus Chamados</h2>
 
-    <button type="submit">Aplicar</button>
+    <br>
 
-</form>
+    <!-- FILTRO -->
+    <form method="GET" action="/meus_chamados">
 
-<br>
+        <label>Ordenar:</label>
 
-<table border="1">
+        <select name="ordem">
 
-<tr>
-    <th>ID</th>
-    <th>Título</th>
-    <th>Descrição</th>
-    <th>Status</th>
-    <th>Nível</th>
-    <th>Técnico</th>
-    <th>Resposta Técnica</th>
-    <th>Data Abertura</th>
-    <th>Data Atendimento</th>
-    <th>Data Finalização</th>
-</tr>
+            <option value="recente"
+                {% if request.args.get('ordem') != 'antigo' %}
+                selected
+                {% endif %}>
+                Mais recentes
+            </option>
 
-{% for chamado in chamados %}
-<tr>
+            <option value="antigo"
+                {% if request.args.get('ordem') == 'antigo' %}
+                selected
+                {% endif %}>
+                Mais antigos
+            </option>
 
-    <td>{{ chamado["id"] }}</td>
+        </select>
 
-    <td>{{ chamado["titulo"] or "" }}</td>
+        <button type="submit">Aplicar</button>
 
-    <td>{{ chamado["descricao"] or "" }}</td>
+    </form>
 
-    <td>{{ chamado["status"] or "" }}</td>
+    <br>
 
-    <td>{{ chamado["nivel"] or "" }}</td>
+    <table border="1">
 
-    <td>{{ chamado["tecnico_responsavel"] or "" }}</td>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Nível</th>
+            <th>Técnico</th>
+            <th>Resposta Técnica</th>
+            <th>Data Abertura</th>
+            <th>Data Atendimento</th>
+            <th>Data Finalização</th>
+        </tr>
 
-    <td>{{ chamado["resposta_tecnica"] or "" }}</td>
+        {% for chamado in chamados %}
+        <tr>
 
-    <td>{{ chamado["data_abertura"] or "" }}</td>
+            <td>{{ chamado["id"] }}</td>
 
-    <td>{{ chamado["data_atendimento"] or "" }}</td>
+            <td>{{ chamado["titulo"] or "" }}</td>
 
-    <td>{{ chamado["data_finalizacao"] or "" }}</td>
+            <td>{{ chamado["descricao"] or "" }}</td>
 
-</tr>
-{% endfor %}
+            <td>{{ chamado["status"] or "" }}</td>
 
-</table>
+            <td>{{ chamado["nivel"] or "" }}</td>
+
+            <td>{{ chamado["tecnico_responsavel"] or "" }}</td>
+
+            <td>{{ chamado["resposta_tecnica"] or "" }}</td>
+
+            <td>{{ chamado["data_abertura"] or "" }}</td>
+
+            <td>{{ chamado["data_atendimento"] or "" }}</td>
+
+            <td>{{ chamado["data_finalizacao"] or "" }}</td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <script>
+
+        function toggleMenu() {
+            document.getElementById("menuUsuario").classList.toggle("show");
+        }
+
+        window.addEventListener("pageshow", function(event) {
+
+            if (event.persisted) {
+                window.location.reload();
+            }
+
+        });
+
+    </script>
 
 </body>
+
 </html>
